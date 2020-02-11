@@ -1,6 +1,6 @@
 # Introduction  
 The Configurable Custom Logic (CCL) is a Core Independent Peripheral (CIP), which means it performs its tasks with no code or supervision from the CPU after configuration is completed. The CCL module is a programmable logic block and can be used to implement Combinational or Sequential logic functions. Since the logic functions implemented in the hardware have faster event response compared to the logic functions implemented in the software, the CCL gives the advantage of faster and predictable response to the users. This example demonstrates  3-bit ring counter implementation  using all 6 Look-Up-tables (LUTs) available with the CCL peripheral of AVR128DA48 MCU.
-### Note: This example could be generated with 48 and 64 pin AVR-DA devices.
+**Note: This example could be generated with 48 and 64 pin AVR-DA devices.**
 
 # Basics of Ring Counter: 
 The ring counter is a type of counter composed of flipflops connected into a shift register, with the output of the last flipflop fed to the input of the first flipflop, making a circular or ring in structure. It is a synchronous counter which as a common clock signal that triggers all the flipflops at the same time. It is initialized such that only one of the flipflop output is 1 while the remainder is 0. Number of states of Ring counter is equal to number of flipflops used. To design three-bit ring counter, three flipflops are required. 
@@ -13,53 +13,49 @@ The sequence of output from the three-bit ring counter is:
 # Demo Description            
 
 ![](https://i.imgur.com/R3jrhXA.jpg)
-
-**Figure 1:Block diagram of three-bit Ring Counter**
+          **Figure 1:Block diagram of three-bit Ring Counter**
 
 In this example,
-•	The AVR128DA48 Curiosity Nano board from Microchip is used to realize the 3-bit Ring Counter.
-•	To realize 3-bit Ring Counter, 3 D flip-flops are required. A pair of LUTs is needed to realize one D flip-flop. All the 6 LUTs are used to realize 3 D flip-flops.
-•	LUT0 and LUT1 are configured together as D flip-flop 0, LUT2 and LUT3 are configured together as D flip-flop 1, and LUT4 and LUT5 are configured together as D flip-flop 2.
-•	These three D flip-flops are cascaded in such a way that output of D flip-flop 0 is fed to the input of D flip-flop 1, D flip-flop 1 output is fed to the D flip-flop 2 input and, D flip-flop 2 output is fed to the D flip-flop 0 input through Event system, to complete the required ring counter circuit as shown in below figure. 
+* The AVR128DA48 Curiosity Nano board from Microchip is used to realize the 3-bit Ring Counter.
+* To realize 3-bit Ring Counter, 3 D flip-flops are required. A pair of LUTs is needed to realize one D flip-flop. All the 6 LUTs are used to realize 3 D flip-flops.
+* LUT0 and LUT1 are configured together as D flip-flop 0, LUT2 and LUT3 are configured together as D flip-flop 1, and LUT4 and LUT5 are configured together as D flip-flop 2.
+* These three D flip-flops are cascaded in such a way that output of D flip-flop 0 is fed to the input of D flip-flop 1, D flip-flop 1 output is fed to the D flip-flop 2 input and, D flip-flop 2 output is fed to the D flip-flop 0 input through Event system, to complete the required ring counter circuit as shown in below figure. 
  
 ![](https://i.imgur.com/rkWOAJF.jpg)
+         **Figure 2:Cascaded connections of three D-flipflops**
 
-**Figure 2:Cascaded connections of three D-flipflops**
-
-•	The even LUTs (i.e. LUT0/LUT2/LUT4) are configured to produce custom logic gate. The output of the Timer B, which is used as a clock signal is applied only to even LUTs. 
-•	All three inputs (i.e. Input (GPIO), Timer B (CLK), feedback of LUT4) is fed only to the first flipflop of LUT0 and value 0XEE is loaded in the truth table.
-•	A GPIO input connected to an even LUT0 is used to generate a Set pulse only to the first flipflop, and before the clock signal is applied, this allows feeding logic “1” value to the ring counter circuit. After reading the first flipflop output, GPIO is configured to feed a logic “0” value. 
-•	LUT2 and LUT4 are fed with only two inputs (i.e. Timer B (CLK), feedback input) and value 0XCC is loaded in the truth table.
-•	The odd LUTs (i.e. LUT1/LUT3/LUT5) are configured as OR gate and value 0X10 is loaded in the truth table.
-•	A GPIO connected to the odd LUTs is configured to generate a logic “1” signal to the LUTs, in order to pass the signals fed as an input to the even LUTs when the CLK signal is applied.
-•	For each clock signal, the data shift by one position among the three flipflops of ring counter circuit.
-•	The on-board mechanical switch (SW0) is used as a trigger for the Timer B to generate a single pulse, which is used as a clock signal to all the three flipflops.
-•	For each switch press event, data gets shifted from output of the D flip-flip 0 to the D flip-flop 1 input, D flip-flop 1 output to the D flip-flop 2 input and, D flip-flop 2 output to the D flip-flop 0 input.
-•	First state of the ring counter is displayed on the terminal window, without a switch press event, only once at the start of the functionality. Next time onwards, a switch press event is required to display the first state of the ring counter.
-•	The on-board indication LED blinks, whenever a switch (SW0) press event is reported. 
-•	The 3-bit ring counter data gets transferred to the terminal window of  data visualizer tool through mEDBG of the AVR128DA48 Curiosity Nano board.
+* The even LUTs (i.e. LUT0/LUT2/LUT4) are configured to produce custom logic gate. The output of the Timer B, which is used as a clock signal is applied only to even LUTs. 
+* All three inputs (i.e. Input (GPIO), Timer B (CLK), feedback of LUT4) is fed only to the first flipflop of LUT0 and value 0XEE is loaded in the truth table.
+* A GPIO input connected to an even LUT0 is used to generate a Set pulse only to the first flipflop, and before the clock signal is applied, this allows feeding logic “1” value to the ring counter circuit. After reading the first flipflop output, GPIO is configured to feed a logic “0” value. 
+* LUT2 and LUT4 are fed with only two inputs (i.e. Timer B (CLK), feedback input) and value 0XCC is loaded in the truth table.
+* The odd LUTs (i.e. LUT1/LUT3/LUT5) are configured as OR gate and value 0X10 is loaded in the truth table.
+* A GPIO connected to the odd LUTs is configured to generate a logic “1” signal to the LUTs, in order to pass the signals fed as an input to the even LUTs when the CLK signal is applied.
+* For each clock signal, the data shift by one position among the three flipflops of ring counter circuit.
+* The on-board mechanical switch (SW0) is used as a trigger for the Timer B to generate a single pulse, which is used as a clock signal to all the three flipflops.
+* For each switch press event, data gets shifted from output of the D flip-flip 0 to the D flip-flop 1 input, D flip-flop 1 output to the D flip-flop 2 input and, D flip-flop 2 output to the D flip-flop 0 input.
+* First state of the ring counter is displayed on the terminal window, without a switch press event, only once at the start of the functionality. Next time onwards, a switch press event is required to display the first state of the ring counter.
+* The on-board indication LED blinks, whenever a switch (SW0) press event is reported. 
+* The 3-bit ring counter data gets transferred to the terminal window of  data visualizer tool through mEDBG of the AVR128DA48 Curiosity Nano board.
 
 
 # Hardware
 
-# AVR128DA48 Curiosity nano evaluation board
+## AVR128DA48 Curiosity nano evaluation board
 Curiosity Nano boards features a variety of PIC® and AVR® MCUs, allowing rapid prototyping and easy evaluation of the design. They also offer full programming and debugging capabilities to support throughout the development process. Featuring a low-power high memory AVR core and intelligent hardware peripherals, the AVR128DA48 curiosity nano is engineered for real-time control, automotive and IoT applications alike.
 
 ![](https://i.imgur.com/WM8mRfR.jpg)
-
-**Figure 3:AVR128DA48 Curiosity Nano board**
+           **Figure 3:AVR128DA48 Curiosity Nano board**
 
 # Software Tools
 Microchip’s IDEs, compiler and graphical code generators are used throughout the application firmware development to provide an easy and hassle-free user experience. Following are the tools which are used for this demo application:
-•	MPLAB X IDE (v 5.30)
-•	XC8 Compiler (v 2.10)
-•	MPLAB Code Configurator (MCC v 3.85.1)
-•	Standalone Data Visualizer (v 2.20.674)
+* MPLAB X IDE (v 5.30)
+* XC8 Compiler (v 2.10)
+* MPLAB Code Configurator (MCC v 3.85.1)
+* Standalone Data Visualizer (v 2.20.674)
 
-## Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.
+**Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.**
 
 # MCC Project creation
-
 Refer Appendix section for step by step instructions to configure the project through MCC. 
 
 # Device Programming:
@@ -82,21 +78,21 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 
 # Demo Operation:
 
-•	After the Curiosity Nano board is powered on, load the firmware to AVR128DA48 MCU as explained in the Device Programming section.
-•	Before each switch press, read the instructions provided on the terminal window. E.g. Press switch- To display first state of the Ring Counter.
-•	Observe first state of the ring counter is displayed by default on the terminal window, only once at the start of the functionality, without a switch press event. The text displayed on the terminal window is “First state=1 0 0”.
+* After the Curiosity Nano board is powered on, load the firmware to AVR128DA48 MCU as explained in the Device Programming section.
+* Before each switch press, read the instructions provided on the terminal window. E.g. Press switch- To display first state of the Ring Counter.
+* Observe first state of the ring counter is displayed by default on the terminal window, only once at the start of the functionality, without a switch press event. The text displayed on the terminal window is “First state=1 0 0”.
 
 ![](https://i.imgur.com/2nEZNgA.jpg)
 
-•	After the first state is displayed on terminal window, user needs to wait for the next instruction to be displayed on terminal window. 
-•	Press Switch (SW0) to display the second state of the ring counter and observe the text “Second state = 0 1 0” is displayed on terminal window.
-•	Observe the next instruction to the user is displayed on terminal window.
+* After the first state is displayed on terminal window, user needs to wait for the next instruction to be displayed on terminal window. 
+* Press Switch (SW0) to display the second state of the ring counter and observe the text “Second state = 0 1 0” is displayed on terminal window.
+* Observe the next instruction to the user is displayed on terminal window.
 
 ![](https://i.imgur.com/21LNnQS.jpg)
 
-•	Press Switch (SW0) to display the third state of the ring counter and observe the text “Third state = 0 0 1” is displayed on terminal window.
-•	Observe again the first instruction to the user is displayed on terminal window.
-•	Press Switch (SW0) to display the first state of the ring counter on the terminal window.
+* Press Switch (SW0) to display the third state of the ring counter and observe the text “Third state = 0 0 1” is displayed on terminal window.
+* Observe again the first instruction to the user is displayed on terminal window.
+* Press Switch (SW0) to display the first state of the ring counter on the terminal window.
 
 ![](https://i.imgur.com/21LNnQS.jpg)
 
@@ -113,81 +109,81 @@ The system configuration window of MCC is used for MCU oscillator, Brown-out Det
 
 # USART1 Configuration: 
 In this example, USART1 is used to transmit the data on the terminal window, to display the three states of the ring counter (i.e. First state=100/Second state=010/Third state=001). The USART1 peripheral is also used to transmit the instructions to the user on terminal window. Configurations to be done on USART1 peripheral.
-•	Check the **Printf support** checkbox.
-•	Set the **Baud Rate** to **9600**.
-•	Check the **Enable USART Transmitter** checkbox.
+* Check the **Printf support** checkbox.
+* Set the **Baud Rate** to **9600**.
+* Check the **Enable USART Transmitter** checkbox.
 
 ![](https://i.imgur.com/xVFCTvD.jpg)
 
 # Timer B: 
 Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it generates a Single pulse which is used as a Clock signal for all the three D-flipflops. The output of all the three D-flipflops changes with respective to this clock signal.  Configurations to be done on TCB2 (Timer B 2) peripheral.
-•	Check the **Enable TCB** option to enable the TCB2 module.
-•	Select **CLK_PER/2** option from the drop-down menu against the **Clock Select** field.
-•	Select the **Single Shot** mode option from the drop-down menu against the **Timer Mode**.
-•	Set the **Timer Period** value to **510us**.
-•	Check the **Enable Event Input Capture** field.
-•	Check the **Enable Pin Output** field. This will enable the Timer waveform output on the corresponding pin.
+* Check the **Enable TCB** option to enable the TCB2 module.
+* Select **CLK_PER/2** option from the drop-down menu against the **Clock Select** field.
+* Select the **Single Shot** mode option from the drop-down menu against the **Timer Mode**.
+* Set the **Timer Period** value to **510us**.
+* Check the **Enable Event Input Capture** field.
+* Check the **Enable Pin Output** field. This will enable the Timer waveform output on the corresponding pin.
 
 ![](https://i.imgur.com/8p8MQv5.jpg)
 
 CCL: 
 To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are configured together as a D-flipflop 0, LUT2 and LUT3 are configured together as a D-flipflop 1, LUT4 and LUT5 are configured together as a D-flipflop 2.
 
- Configurations to be done for LUT0.
-•	Check the **Enable CCL** option, which enables the CCL peripheral.
-•	Select the LUT0 and scroll down, configure LUT0 settings as shown in below figure.
-•	Check the **Enable LUT** option, which enables the LUT0.
-•	Select the **EVENT B** option from the dropdown menu against the **LUT-IN0** field. The output of the D-flipflop 2 (LUT 4) is given as input to the D-flipflop 0 through Event System, which is named as    EVENT B.
-•	Select the **IN1** option from the drop-down menu against the **LUT-IN1** field. IO input is fed only to the first flipflop. IO PA1 pin is configured as an output, which will feed logic “1” signal to the first flipflop.
-•	Select **EVENT A** option from the drop-down menu against the **LUT-IN2** field. The Single pulse generated by Timer B, which is used as a clock signal is fed to the LUT0 through Event System, which is named as EVENT A.
-•	Check the **Enable LUT-OUT** field, which enables the output of LUT0 on the corresponding pin.
-•	In Truth Table section, select the gate as **Custom** and configure the output value to **0XEE**.
-•	In **Sequential Configuration** section, select the **DFF**(D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
+ ###Configurations to be done for LUT0.
+* Check the **Enable CCL** option, which enables the CCL peripheral.
+* Select the LUT0 and scroll down, configure LUT0 settings as shown in below figure.
+* Check the **Enable LUT** option, which enables the LUT0.
+* Select the **EVENT B** option from the dropdown menu against the **LUT-IN0** field. The output of the D-flipflop 2 (LUT 4) is given as input to the D-flipflop 0 through Event System, which is named as    EVENT B.
+* Select the **IN1** option from the drop-down menu against the **LUT-IN1** field. IO input is fed only to the first flipflop. IO PA1 pin is configured as an output, which will feed logic “1” signal to the first flipflop.
+* Select **EVENT A** option from the drop-down menu against the **LUT-IN2** field. The Single pulse generated by Timer B, which is used as a clock signal is fed to the LUT0 through Event System, which is named as EVENT A.
+* Check the **Enable LUT-OUT** field, which enables the output of LUT0 on the corresponding pin.
+* In Truth Table section, select the gate as **Custom** and configure the output value to **0XEE**.
+* In **Sequential Configuration** section, select the **DFF**(D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
-![](https://i.imgur.com/LeeCOdK.jpg)
+![](https://i.imgur.com/LeeCOdK.jpg =700x)
 
-Configurations to be done for LUT1.
-•	Check the **Enable LUT** option, which enables LUT1.
-•	Select the **IN2** option from the drop-down menu against the **LUT-IN2** field. PC2 pin is configured as an input and pull-up option is enabled which feeds a logic “1” signal to the LUT1.
-•	In Truth Table section, select OR gate option from the drop-down menu.
+###Configurations to be done for LUT1.
+* Check the **Enable LUT** option, which enables LUT1.
+* Select the **IN2** option from the drop-down menu against the **LUT-IN2** field. PC2 pin is configured as an input and pull-up option is enabled which feeds a logic “1” signal to the LUT1.
+* In Truth Table section, select OR gate option from the drop-down menu.
 
 ![](https://i.imgur.com/LKCG7CZ.jpg)
 
-Configurations to be done for LUT2.
-•	Check the **Enable CCL** option, which enables the CCL peripheral.
-•	Select the LUT2 and scroll down, configure LUT2 settings as shown in below figure.
-•	Check the **Enable LUT** option, which enables the LUT2.
-•	Select the **EVENT B** option from the dropdown menu against the **LUT-IN1 field**. The output of the D-flipflop 0 is given as input to the D-flipflop 1 through Event System, which is named as EVENT B.
-•	Select **EVENT A** option from the drop-down menu against the **LUT-IN2** field. The Single pulse generated by Timer B, which is used as a clock signal is fed to the LUT2 through Event System, which is named as EVENT A.
-•	Check the **Enable LUT-OUT** field, which enables the output of LUT2 on the corresponding pin.
-•	In Truth Table section, select the gate as **Custom** and configure the output value to **0XCC**.
-•	In **Sequential Configuration** section, select the **DFF** (D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
+###Configurations to be done for LUT2.
+* Check the **Enable CCL** option, which enables the CCL peripheral.
+* Select the LUT2 and scroll down, configure LUT2 settings as shown in below figure.
+* Check the **Enable LUT** option, which enables the LUT2.
+* Select the **EVENT B** option from the dropdown menu against the **LUT-IN1 field**. The output of the D-flipflop 0 is given as input to the D-flipflop 1 through Event System, which is named as EVENT B.
+* Select **EVENT A** option from the drop-down menu against the **LUT-IN2** field. The Single pulse generated by Timer B, which is used as a clock signal is fed to the LUT2 through Event System, which is named as EVENT A.
+* Check the **Enable LUT-OUT** field, which enables the output of LUT2 on the corresponding pin.
+* In Truth Table section, select the gate as **Custom** and configure the output value to **0XCC**.
+* In **Sequential Configuration** section, select the **DFF** (D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
-![](https://i.imgur.com/OKbSIHA.jpg)
+![](https://i.imgur.com/OKbSIHA.jpg =700x)
 
-Configurations to be done for LUT3
-•	Check the **Enable LUT** option, which enables LUT3.
-•	Select the **IN2** option from the drop-down menu against the **LUT-IN2** field. PF2 pin is configured as an input and pull-up option is enabled which feeds a logic “1” signal to the LUT3.
-•	In Truth Table section, select OR gate option from the drop-down menu.
+###Configurations to be done for LUT3
+* Check the **Enable LUT** option, which enables LUT3.
+* Select the **IN2** option from the drop-down menu against the **LUT-IN2** field. PF2 pin is configured as an input and pull-up option is enabled which feeds a logic “1” signal to the LUT3.
+* In Truth Table section, select OR gate option from the drop-down menu.
 
 ![](https://i.imgur.com/EGLCP8X.jpg)
 
-Configurations to be done for LUT4.
-•	Check the **Enable CCL** option, which enables the CCL peripheral.
-•	Select the LUT4 and scroll down, configure LUT4 settings as shown in below figure.
-•	Check the **Enable LUT** option, which enables the LUT4.
-•	Select the **EVENT B** option from the dropdown menu against the **LUT-IN1** field. The output of the D-flipflop 1 is given as input to the D-flipflop 2 through Event System, which is named as EVENT B.
-•	Select **EVENT A** option from the drop-down menu against the **LUT-IN2 field**. The Single pulse generated by Timer B, which is used as a clock signal is fed to the LUT4 through Event System, which is named as EVENT A.
-•	Check the **Enable LUT-OUT** field, which enables the output of LUT4 on the corresponding pin.
-•	In Truth Table section, select the gate as **Custom** and configure the output value to **0XCC**.
-•	In **Sequential Configuration** section, select the **DFF** (D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
+###Configurations to be done for LUT4.
+* Check the **Enable CCL** option, which enables the CCL peripheral.
+* Select the LUT4 and scroll down, configure LUT4 settings as shown in below figure.
+* Check the **Enable LUT** option, which enables the LUT4.
+* Select the **EVENT B** option from the dropdown menu against the **LUT-IN1** field. The output of the D-flipflop 1 is given as input to the D-flipflop 2 through Event System, which is named as EVENT B.
+* Select **EVENT A** option from the drop-down menu against the **LUT-IN2 field**. The Single pulse generated by Timer B, which is used as a clock signal is fed to the LUT4 through Event System, which is named as EVENT A.
+* Check the **Enable LUT-OUT** field, which enables the output of LUT4 on the corresponding pin.
+* In Truth Table section, select the gate as **Custom** and configure the output value to **0XCC**.
+* In **Sequential Configuration** section, select the **DFF** (D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
-![](https://i.imgur.com/Rles6s1.jpg)
+![](https://i.imgur.com/Rles6s1.jpg =700x)
 
-Configurations to be done for LUT5.
-•	Check the **Enable LUT** option, which enables LUT5.
-•	Select the **EVENTA** option from the drop-down menu against the **LUT-IN2** field. PA2 pin is configured as an input and pull-up option is enabled, which feeds a logic “1” signal to the LUT5 through Event system, which is named as EVENTA.
-•	In Truth Table section, select OR gate option from the drop-down menu.
+###Configurations to be done for LUT5.
+* Check the **Enable LUT** option, which enables LUT5.
+* Select the **EVENTA** option from the drop-down menu against the **LUT-IN2** field. PA2 pin is configured as an input and pull-up option is enabled, which feeds a logic “1” signal to the LUT5 through Event system, which is named as EVENTA.
+* In Truth Table section, select OR gate option from the drop-down menu.
 
 ![](https://i.imgur.com/0rMyavS.jpg)
 
@@ -196,12 +192,12 @@ Configurations to be done for LUT5.
 # Event System: 
 In this example, event system is used to connect the output of D-flipflop 0 to the input of D-flipflop 1 and output of D-flipflop 1 to the input of D-flipflop 2 and output of D-flipflop 2 to the input of D-flipflop 0.
 Event system is also used to connect output of the Timer B (generates a single pulse, which is used as a clock signal) to LUT0, LUT2, LUT4. Configurations to be done for the event system.
-Select PORTA_PIN2 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT5A through CHANNEL 0.
-•	Select PORTC_PIN7 option from the drop-down menu against the Event Generator, which is connected to the Event User TCB2CAPT through CHANNEL 2.
-•	Select TCB2_CAPT option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT0A, CCLLUT2A and CCLLUT4A through CHANNEL 3.
-•	Select CCL_LUT0 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT2B through CHANNEL 4.
-•	Select CCL_LUT2 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT4B through CHANNEL 5.
-•	Select CCL_LUT4 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT0B through CHANNEL 6.
+* Select PORTA_PIN2 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT5A through CHANNEL 0.
+* Select PORTC_PIN7 option from the drop-down menu against the Event Generator, which is connected to the Event User TCB2CAPT through CHANNEL 2.
+* Select TCB2_CAPT option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT0A, CCLLUT2A and CCLLUT4A through CHANNEL 3.
+* Select CCL_LUT0 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT2B through CHANNEL 4.
+* Select CCL_LUT2 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT4B through CHANNEL 5.
+* Select CCL_LUT4 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT0B through CHANNEL 6.
 
 ![](https://i.imgur.com/UodeJyD.jpg)
 
@@ -209,17 +205,17 @@ Select PORTA_PIN2 option from the drop-down menu against the Event Generator, wh
 
 # Pin Module: 
 The I/O pin mapping of the AVR128DA48MCU for USART3, CCL, Timer B interface, Curiosity Nano on-board LED and switch is shown in below figure. This configuration needs to be done in Pin Module section of the MCC.
-•	Configure pin PA1 as output, which feeds logic “1” signal to LUT0.
-•	Select pin PA2 as input and enable PULLUPEN, which feed logic “1” signal to LUT5.
-•	Configure pin PA3 as output of LUT0.
-•	Configure pin PB3 as output of LUT4.
-•	Configure pin PB4 as TCB2 output waveform. 
-•	Configure pin PC0 as USART1 TXD pin.
-•	Configure pin PC7 as output.  The PC7 pin is connected to Switch and select “Sense Rising Edge” interrupt, which is used for detecting the switch press event.
-•	Configure pin PD3 as output of LUT2.
-•	Configure pin PC6 	as output, to control on-board LED.
-•	Configure pin PC2 as input and enable PULLUPEN, which feed logic “1” signal to LUT1.
-•	Configure pin PF2 as input and enable PULLUPEN, which feed logic “1” signal to LUT3.
+* Configure pin PA1 as output, which feeds logic “1” signal to LUT0.
+* Select pin PA2 as input and enable PULLUPEN, which feed logic “1” signal to LUT5.
+* Configure pin PA3 as output of LUT0.
+* Configure pin PB3 as output of LUT4.
+* Configure pin PB4 as TCB2 output waveform. 
+* Configure pin PC0 as USART1 TXD pin.
+* Configure pin PC7 as output.  The PC7 pin is connected to Switch and select “Sense Rising Edge” interrupt, which is used for detecting the switch press event.
+* Configure pin PD3 as output of LUT2.
+* Configure pin PC6 	as output, to control on-board LED.
+* Configure pin PC2 as input and enable PULLUPEN, which feed logic “1” signal to LUT1.
+* Configure pin PF2 as input and enable PULLUPEN, which feed logic “1” signal to LUT3.
 
 ![](https://i.imgur.com/8QQ4s2V.jpg)
 
