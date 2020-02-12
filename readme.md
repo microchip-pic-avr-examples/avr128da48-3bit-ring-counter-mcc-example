@@ -71,22 +71,22 @@ Refer Appendix section for step by step instructions to configure the project th
 Load the firmware to the MCU by clicking on “Run main project” icon in MPLAB X IDE as shown in below figure.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/uF9J187.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/NuTntAa.jpg">
 </p>
 
 # Steps to open Terminal window in Data Visualizer:
 
 Open the Terminal window in Standalone Data Visualizer tool to observe the data of the ring counter and follow the below mentioned steps to open terminal window.
 
-1.	In the Data Visualizer window, click on the Configuration tab.
-2.	In the Modules section, expand External connection option and then double click on Serial Port.
-3.	Select the Curiosity Virtual Com Port in Serial Port Control Panel.
+1.	In the Data Visualizer window, click on the **Configuration tab**.
+2.	In the **Modules section**, expand **External connection** option and then double click on Serial Port.
+3.	Select the **Curiosity Virtual Com Port** in Serial Port Control Panel.
 4.	Set the Baud rate to 9600.
-5.	Check the “Open Terminal” option.
-6.	Click on the Connect button.
+5.	Check the **“Open Terminal”** option.
+6.	Click on the **Connect** button and then terminal window is opened.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/NJuNcu1.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/1FNEqoM.jpg">
 </p>
 
 # Demo Operation:
@@ -96,7 +96,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 * Observe first state of the ring counter is displayed by default on the terminal window, only once at the start of the functionality, without a switch press event. The text displayed on the terminal window is “First state=1 0 0”.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/2nEZNgA.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/F8IsnCm.jpg">
 </p>
 
 * After the first state is displayed on terminal window, user needs to wait for the next instruction to be displayed on terminal window. 
@@ -104,7 +104,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 * Observe the next instruction to the user is displayed on terminal window.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/21LNnQS.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/UrKakc8.jpg">
 </p>
 
 * Press Switch (SW0) to display the third state of the ring counter and observe the text “Third state = 0 0 1” is displayed on terminal window.
@@ -112,7 +112,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 * Press Switch (SW0) to display the first state of the ring counter on the terminal window.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/21LNnQS.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/dLmrKpN.jpg">
 </p>
 
 # Conclusion:
@@ -126,7 +126,7 @@ The usage of CCL peripheral provides predictable response time, reduces firmware
 The system configuration window of MCC is used for MCU oscillator, Brown-out Detector, Watchdog timer and low voltage programming configuration. The **Internal Oscillator** option is selected as a clock source and by default 4 MHz system clock is selected as a Oscillator frequency. Check the **Prescaler Enable** option and select prescaler division as 4x which generates 1MHz frequency as the main clock.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/F0D6TVK.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/Nw5ssFD.jpg">
 </p>
 
 # USART1 Configuration: 
@@ -136,7 +136,7 @@ In this example, USART1 is used to transmit the data on the terminal window, to 
 * Check the **Enable USART Transmitter** checkbox.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/xVFCTvD.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/ia0ap9m.jpg">
 </p>
 
 # Timer B: 
@@ -149,7 +149,7 @@ Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it gener
 * Check the **Enable Pin Output** field. This will enable the Timer waveform output on the corresponding pin.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/8p8MQv5.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/D3aikAF.jpg">
 </p>
 
 # CCL: 
@@ -157,7 +157,12 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
  ### Configurations to be done for LUT0.
 * Check the **Enable CCL** option, which enables the CCL peripheral.
-* Select the LUT0 and scroll down, configure LUT0 settings as shown in below figure.
+* Select the **LUT0** in CCL settings window and scroll down the cursor.
+
+<p align="center">
+  <img width=auto height=auto src="https://i.imgur.com/96hWkwq.jpg">
+</p>
+
 * Check the **Enable LUT** option, which enables the LUT0.
 * Select the **EVENT B** option from the dropdown menu against the **LUT-IN0** field. The output of the D-flipflop 2 (LUT 4) is given as input to the D-flipflop 0 through Event System, which is named as    EVENT B.
 * Select the **IN1** option from the drop-down menu against the **LUT-IN1** field. IO input is fed only to the first flipflop. IO PA1 pin is configured as an output, which will feed logic “1” signal to the first flipflop.
@@ -167,7 +172,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In **Sequential Configuration** section, select the **DFF**(D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/LeeCOdK.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/74K8HOS.jpg">
 </p>
 
 ### Configurations to be done for LUT1.
@@ -176,12 +181,17 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In Truth Table section, select OR gate option from the drop-down menu.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/LKCG7CZ.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/AdT3Y6i.jpg">
 </p>
 
 ### Configurations to be done for LUT2.
 * Check the **Enable CCL** option, which enables the CCL peripheral.
-* Select the LUT2 and scroll down, configure LUT2 settings as shown in below figure.
+* Select the **LUT2** in CCL settings window and scroll down the cursor.
+
+<p align="center">
+  <img width=auto height=auto src="https://i.imgur.com/NE8kOC3.jpg">
+</p>
+
 * Check the **Enable LUT** option, which enables the LUT2.
 * Select the **EVENT B** option from the dropdown menu against the **LUT-IN1 field**. The output of the D-flipflop 0 is given as input to the D-flipflop 1 through Event System, which is named as EVENT B.
 * Select **EVENT A** option from the drop-down menu against the **LUT-IN2** field. The Single pulse generated by Timer B, which is used as a clock signal is fed to the LUT2 through Event System, which is named as EVENT A.
@@ -190,7 +200,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In **Sequential Configuration** section, select the **DFF** (D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/OKbSIHA.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/iXLA5xU.jpg">
 </p>
 
 ### Configurations to be done for LUT3
@@ -199,12 +209,17 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In Truth Table section, select OR gate option from the drop-down menu.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/EGLCP8X.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/zKCSNhe.jpg">
 </p>
 
 ### Configurations to be done for LUT4.
 * Check the **Enable CCL** option, which enables the CCL peripheral.
-* Select the LUT4 and scroll down, configure LUT4 settings as shown in below figure.
+* Select the **LUT4** in CCL settings window and scroll down the cursor.
+
+<p align="center">
+  <img width=auto height=auto src="https://i.imgur.com/7igxSjz.jpg">
+</p>
+
 * Check the **Enable LUT** option, which enables the LUT4.
 * Select the **EVENT B** option from the dropdown menu against the **LUT-IN1** field. The output of the D-flipflop 1 is given as input to the D-flipflop 2 through Event System, which is named as EVENT B.
 * Select **EVENT A** option from the drop-down menu against the **LUT-IN2 field**. The Single pulse generated by Timer B, which is used as a clock signal is fed to the LUT4 through Event System, which is named as EVENT A.
@@ -213,7 +228,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In **Sequential Configuration** section, select the **DFF** (D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/Rles6s1.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/qOkMJrV.jpg">
 </p>
 
 ### Configurations to be done for LUT5.
@@ -222,7 +237,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In Truth Table section, select OR gate option from the drop-down menu.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/0rMyavS.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/10HAPLk.jpg">
 </p>
 
 **Note:** Once all the peripherals configuration is done and MCC files are generated, open ccl.c file from src (source) folder in the project. In the file write a value “0XF3” to the registers named as CCL.LUT0CTRLA, CCL.LUT2CTRLA and CCL.LUT4CTRLA. Writing this value to a register allows to use TCB2 (Timer B) output as a clock to even LUT’s. 
@@ -230,37 +245,37 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 # Event System: 
 In this example, event system is used to connect the output of D-flipflop 0 to the input of D-flipflop 1 and output of D-flipflop 1 to the input of D-flipflop 2 and output of D-flipflop 2 to the input of D-flipflop 0.
 Event system is also used to connect output of the Timer B (generates a single pulse, which is used as a clock signal) to LUT0, LUT2, LUT4. Configurations to be done for the event system.
-* Select PORTA_PIN2 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT5A through CHANNEL 0.
-* Select PORTC_PIN7 option from the drop-down menu against the Event Generator, which is connected to the Event User TCB2CAPT through CHANNEL 2.
-* Select TCB2_CAPT option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT0A, CCLLUT2A and CCLLUT4A through CHANNEL 3.
-* Select CCL_LUT0 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT2B through CHANNEL 4.
-* Select CCL_LUT2 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT4B through CHANNEL 5.
-* Select CCL_LUT4 option from the drop-down menu against the Event Generator, which is connected to the Event User CCLLUT0B through CHANNEL 6.
+* Select **PORTA_PIN2** option from the drop-down menu against the Event Generator, which is connected to the Event User **CCLLUT5A** through CHANNEL 0.
+* Select **PORTC_PIN7** option from the drop-down menu against the Event Generator, which is connected to the Event User **TCB2CAPT** through CHANNEL 2.
+* Select **TCB2_CAPT** option from the drop-down menu against the Event Generator, which is connected to the Event User **CCLLUT0A, CCLLUT2A** and **CCLLUT4A** through CHANNEL 3.
+* Select **CCL_LUT0** option from the drop-down menu against the Event Generator, which is connected to the Event User **CCLLUT2B** through CHANNEL 4.
+* Select **CCL_LUT2** option from the drop-down menu against the Event Generator, which is connected to the Event User **CCLLUT4B** through CHANNEL 5.
+* Select **CCL_LUT4** option from the drop-down menu against the Event Generator, which is connected to the Event User **CCLLUT0B** through CHANNEL 6.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/UodeJyD.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/M3kjuCp.jpg">
 </p>
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/pjN1Yvt.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/yH1nbNq.jpg">
 </p>
 
 # Pin Module: 
 The I/O pin mapping of the AVR128DA48MCU for USART3, CCL, Timer B interface, Curiosity Nano on-board LED and switch is shown in below figure. This configuration needs to be done in Pin Module section of the MCC.
 * Configure pin PA1 as output, which feeds logic “1” signal to LUT0.
 * Select pin PA2 as input and enable PULLUPEN, which feed logic “1” signal to LUT5.
-* Configure pin PA3 as output of LUT0.
-* Configure pin PB3 as output of LUT4.
-* Configure pin PB4 as TCB2 output waveform. 
-* Configure pin PC0 as USART1 TXD pin.
-* Configure pin PC7 as output.  The PC7 pin is connected to Switch and select “Sense Rising Edge” interrupt, which is used for detecting the switch press event.
-* Configure pin PD3 as output of LUT2.
-* Configure pin PC6 	as output, to control on-board LED.
-* Configure pin PC2 as input and enable PULLUPEN, which feed logic “1” signal to LUT1.
-* Configure pin PF2 as input and enable PULLUPEN, which feed logic “1” signal to LUT3.
+* Configure pin **PA3** as output of LUT0.
+* Configure pin **PB3** as output of LUT4.
+* Configure pin **PB4** as TCB2 output waveform. 
+* Configure pin **PC0** as USART1 TXD pin.
+* Configure pin **PC7** as output.  The PC7 pin is connected to Switch and select **“Sense Rising Edge”** interrupt, which is used for detecting the switch press event.
+* Configure pin **PD3** as output of LUT2.
+* Configure pin **PC6** as output, to control on-board LED.
+* Configure pin **PC2** as input and enable **PULLUPEN**, which feed logic “1” signal to LUT1.
+* Configure pin **PF2** as input and enable **PULLUPEN**, which feed logic “1” signal to LUT3.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/8QQ4s2V.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/rwWXBiA.jpg">
 </p>
 
 
