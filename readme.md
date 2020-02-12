@@ -96,7 +96,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 * Observe first state of the ring counter is displayed by default on the terminal window, only once at the start of the functionality, without a switch press event. The text displayed on the terminal window is “First state=1 0 0”.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/F8IsnCm.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/2nEZNgA.jpg">
 </p>
 
 * After the first state is displayed on terminal window, user needs to wait for the next instruction to be displayed on terminal window. 
@@ -104,7 +104,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 * Observe the next instruction to the user is displayed on terminal window.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/UrKakc8.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/21LNnQS.jpg">
 </p>
 
 * Press Switch (SW0) to display the third state of the ring counter and observe the text “Third state = 0 0 1” is displayed on terminal window.
@@ -112,7 +112,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 * Press Switch (SW0) to display the first state of the ring counter on the terminal window.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/dLmrKpN.jpg">
+  <img width=auto height=auto src="https://i.imgur.com/cZATP17.jpg">
 </p>
 
 # Conclusion:
@@ -122,14 +122,14 @@ The usage of CCL peripheral provides predictable response time, reduces firmware
 
 # Appendix:  MCC Project creation
 
-# System Module Configuration: 
+## System Module Configuration: 
 The system configuration window of MCC is used for MCU oscillator, Brown-out Detector, Watchdog timer and low voltage programming configuration. The **Internal Oscillator** option is selected as a clock source and by default 4 MHz system clock is selected as a Oscillator frequency. Check the **Prescaler Enable** option and select prescaler division as 4x which generates 1MHz frequency as the main clock.
 
 <p align="center">
   <img width=auto height=auto src="https://i.imgur.com/Nw5ssFD.jpg">
 </p>
 
-# USART1 Configuration: 
+## USART1 Configuration: 
 In this example, USART1 is used to transmit the data on the terminal window, to display the three states of the ring counter (i.e. First state=100/Second state=010/Third state=001). The USART1 peripheral is also used to transmit the instructions to the user on terminal window. Configurations to be done on USART1 peripheral.
 * Check the **Printf support** checkbox.
 * Set the **Baud Rate** to **9600**.
@@ -139,7 +139,7 @@ In this example, USART1 is used to transmit the data on the terminal window, to 
   <img width=auto height=auto src="https://i.imgur.com/ia0ap9m.jpg">
 </p>
 
-# Timer B: 
+## Timer B: 
 Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it generates a Single pulse which is used as a Clock signal for all the three D-flipflops. The output of all the three D-flipflops changes with respective to this clock signal.  Configurations to be done on TCB2 (Timer B 2) peripheral.
 * Check the **Enable TCB** option to enable the TCB2 module.
 * Select **CLK_PER/2** option from the drop-down menu against the **Clock Select** field.
@@ -152,7 +152,7 @@ Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it gener
   <img width=auto height=auto src="https://i.imgur.com/D3aikAF.jpg">
 </p>
 
-# CCL: 
+## Configurable Custom Logic: 
 To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are configured together as a D-flipflop 0, LUT2 and LUT3 are configured together as a D-flipflop 1, LUT4 and LUT5 are configured together as a D-flipflop 2.
 
  ### Configurations to be done for LUT0.
@@ -242,7 +242,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 **Note:** Once all the peripherals configuration is done and MCC files are generated, open ccl.c file from src (source) folder in the project. In the file write a value “0XF3” to the registers named as CCL.LUT0CTRLA, CCL.LUT2CTRLA and CCL.LUT4CTRLA. Writing this value to a register allows to use TCB2 (Timer B) output as a clock to even LUT’s. 
 
-# Event System: 
+## Event System: 
 In this example, event system is used to connect the output of D-flipflop 0 to the input of D-flipflop 1 and output of D-flipflop 1 to the input of D-flipflop 2 and output of D-flipflop 2 to the input of D-flipflop 0.
 Event system is also used to connect output of the Timer B (generates a single pulse, which is used as a clock signal) to LUT0, LUT2, LUT4. Configurations to be done for the event system.
 * Select **PORTA_PIN2** option from the drop-down menu against the Event Generator, which is connected to the Event User **CCLLUT5A** through CHANNEL 0.
@@ -260,7 +260,7 @@ Event system is also used to connect output of the Timer B (generates a single p
   <img width=auto height=auto src="https://i.imgur.com/yH1nbNq.jpg">
 </p>
 
-# Pin Module: 
+## Pin Module: 
 The I/O pin mapping of the AVR128DA48MCU for USART3, CCL, Timer B interface, Curiosity Nano on-board LED and switch is shown in below figure. This configuration needs to be done in Pin Module section of the MCC.
 * Configure pin PA1 as output, which feeds logic “1” signal to LUT0.
 * Select pin PA2 as input and enable PULLUPEN, which feed logic “1” signal to LUT5.
