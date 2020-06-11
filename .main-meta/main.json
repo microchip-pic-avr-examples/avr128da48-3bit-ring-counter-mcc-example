@@ -1,0 +1,72 @@
+{
+    "metaDataVersion": "1.0.0",
+    "category": "com.microchip.ide.project",
+    "content": {
+        "metaDataVersion": "1.0.0",
+        "name": "com.microchip.mcu8.mplabx.project.avr128da48-3bit-ring-counter-mcc-example",
+        "version": "1.0.2",
+        "displayName": "AVR128DA48 3BIT RING COUNTER MCC EXAMPLE",
+        "projectName": "avr128da48-3bit-ring-counter-mcc-example",
+        "shortDescription": "AVR128DA48 3-bit ring counter implementation using CCL peripheral",
+        "ide": {
+            "name": "MPLABX",
+            "semverRange": ">=5.30.0"
+        },
+        "compiler": {
+            "name": "XC8",
+            "semverRange": "^2.10.0"
+        },
+        "dfp": {
+            "name": "AVR-Dx_DFP",
+            "semverRange": "^1.0.18"
+        },
+        "configurator": {
+            "name": "MCC",
+            "semverRange": ">=3.85.1"
+        },
+        "device": {
+            "metaDataVersion": "1.0.0",
+            "category": "com.microchip.portal.contentRef",
+            "content": {
+                "metaDataVersion": "1.0.0",
+                "category": "com.microchip.device",
+                "name": "AVR128DA48",
+                "versionRange": "*"
+            }
+        },
+        "author": "Microchip",
+        "subcategories": [
+            "MCC",
+            [
+               "Perpherals", "CCL"
+            ],
+            [
+               "Perpherals", "USART1"
+            ],
+            [
+               "Perpherals", "TCB2"
+            ],
+			[
+               "Perpherals", "EVENT SYSTEM"
+            ]					
+        ],
+        "peripherals": [
+            "CCL","USART1","TCB2","EVENT SYSTEM"
+        ],
+        "keywords": [
+            "MCC",
+            "3-Bit Ring Counter"			
+        ]
+    },
+    "additionalData": {
+        "longDescription": {
+            "metaDataVersion": "1.0.0",
+            "category": "com.microchip.portal.fileRef",
+            "content": {
+                "metaDataVersion": "1.0.0",
+                "fileName": "./README.md",
+                "mimeType": "text/markdown"
+            }
+        }
+    }
+}
