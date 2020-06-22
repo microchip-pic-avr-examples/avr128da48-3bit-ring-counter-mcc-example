@@ -38,16 +38,16 @@
         "subcategories": [
             "MCC",
             [
-               "Perpherals", "CCL"
+               "Peripherals", "CCL"
             ],
             [
-               "Perpherals", "USART1"
+               "Peripherals", "USART1"
             ],
             [
-               "Perpherals", "TCB2"
+               "Peripherals", "TCB2"
             ],
 			[
-               "Perpherals", "EVENT SYSTEM"
+               "Peripherals", "EVENT SYSTEM"
             ]					
         ],
         "peripherals": [
