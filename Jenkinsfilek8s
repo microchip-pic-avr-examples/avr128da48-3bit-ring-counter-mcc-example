@@ -13,7 +13,8 @@ pipeline {
                 description: "Email to send build failure, fixed and successful deployment notifications.")
     }
 	
-	environment {		
+	environment {	
+		GITHUB_OWNER = 'microchip-pic-avr-examples'
 		GITHUB_URL ='https://github.com/microchip-pic-avr-examples/avr128da48-3bit-ring-counter-mcc-example.git'
 		BITBUCKET_URL = 'https://bitbucket.microchip.com/scm/ebe/avr128da48-3bit-ring-counter-mcc-example.git'
 		DEPLOY_TOOL_URL = 'https://bitbucket.microchip.com/scm/citd/tool-github-deploy.git'
@@ -32,6 +33,20 @@ pipeline {
 				checkout scm
             }
         }
+		
+		stage('metadata') {
+			when {
+				changeset ".main-meta/main.json"
+			}
+            steps {
+				script {
+					execute("pip install jsonschema")
+					execute("git clone https://bitbucket.microchip.com/scm/citd/metadata-schema.git")						
+					execute("git clone https://bitbucket.microchip.com/scm/citd/tool-metadata-validator.git")					
+					execute("cd tool-metadata-validator && python metadata-validator.py -data '../.main-meta/main.json' -schema '../metadata-schema/main-schema.json'")
+				}
+            }
+        }
 
 		stage('Build') {
             steps {
@@ -41,8 +56,8 @@ pipeline {
 				}
             }
         }	
-		
-        stage('Deploy') {
+
+        stage('GitHub-Deploy') {
 			when {
 				not { 
 					changeRequest() 
@@ -63,6 +78,35 @@ pipeline {
 				}
 			}
         }		
+		
+		stage('Portal-Deploy') {
+			when {
+				not { 
+					changeRequest() 
+				}			
+				tag ''
+			}
+			steps {
+				script {
+					def metadata = readJSON file:".main-meta/main.json"					
+					def version = metadata.content.version
+					def project = metadata.content.projectName
+
+					if(version == env.TAG_NAME) {				
+						def cmdArgs = "'{\"repoOwnerName\":\"$env.GITHUB_OWNER\",\"repoName\":\"$project\",\"tagName\":\"$version\"}'"
+						cmdArgs = cmdArgs.replaceAll("\"","\\\\\"")						
+					
+						execute("git clone https://bitbucket.microchip.com/scm/portal/bundles.git")
+						execute("cd bundles && chmod 755 ./portal-client-cli-linux")
+						execute("git clone https://bitbucket.microchip.com/scm/citd/tool-portal-client-launcher.git")
+						execute("cd tool-portal-client-launcher && node portalLauncher.js -app=../bundles/portal-client-cli-linux -cmd=\"uploadGitHub ${cmdArgs}\"")
+					} else {
+						echo "Tag name is not equal to metadata content version."
+						execute("exit 1")
+					}
+				}
+			}
+		}
 	}
 
     post {
