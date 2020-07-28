@@ -1,13 +1,24 @@
-[![MCHP](https://cldup.com/U0qhLwBijF.png)](https://www.microchip.com)
+<!-- Please do not change this html logo with link -->
+<a href="https://www.microchip.com" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="200"/></a>
+
 # Introduction  
 The Configurable Custom Logic (CCL) is a Core Independent Peripheral (CIP), which means it performs its tasks with no code or supervision from the CPU after configuration is completed. The CCL module is a programmable logic block and can be used to implement Combinational or Sequential logic functions. Since the logic functions implemented in the hardware have faster event response compared to the logic functions implemented in the software, the CCL gives the advantage of faster and predictable response to the users. This example demonstrates  3-bit ring counter implementation  using all 6 Look-Up-tables (LUTs) available with the CCL peripheral of AVR128DA48 MCU.
 
-**Note:**
+**Note:** ***This example could be generated with 48 and 64 pin AVR-DA devices.***
 
-**1.	 This example could be generated with 48 and 64 pin AVR-DA devices.**
+#### To see the 3bit ring counter demo operation video, click on the below image.
 
-**2.	 This example is also generated using START and is available on GitHub  at this location.**
-https://github.com/microchip-pic-avr-examples/avr128da48-3bit-ring-counter-start-example.git
+<p align="center">
+<br><a href="https://youtu.be/BYyyZrUc0Wo" rel="nofollow"><img src="images/frontimageofvideo.png" alt="AVR DA" width="500"/></a>
+</p>
+
+## Useful Links
+
+- [AVR128DA48 Product Page](https://www.microchip.com/wwwproducts/en/AVR128DA28 "AVR128DA48 Product Page")
+- [AVR128DA48 Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=avr128da48 "AVR128DA48 Code Examples on GitHub")
+- [AVR128DA48 Project Examples in START](https://start.atmel.com/#examples/AVR128DA48CuriosityNano "AVR128DA48 Project Examples in START")
+- [3bit Ring Counter - Studio Example]( https://github.com/microchip-pic-avr-examples/avr128da48-3bit-ring-counter-start-example.git "3bit Ring Counter - Studio Example")
+
 
 # Basics of Ring Counter: 
 The ring counter is a type of counter composed of flipflops connected into a shift register, with the output of the last flipflop fed to the input of the first flipflop, making a circular or ring in structure. It is a synchronous counter which as a common clock signal that triggers all the flipflops at the same time. It is initialized such that only one of the flipflop output is 1 while the remainder is 0. Number of states of Ring counter is equal to number of flipflops used. To design three-bit ring counter, three flipflops are required. 
@@ -15,14 +26,15 @@ The ring counter is a type of counter composed of flipflops connected into a shi
 The sequence of output from the three-bit ring counter is: 
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/kRH7WaT.jpg">
+  <img width=1000 height=auto src="images/1.png">
+  <br><strong>Table 1: Output states of 3bit ring counter <br>
 </p>
 
 # Demo Description            
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/R3jrhXA.jpg">
-  <br>Figure 1: Block diagram of three-bit Ring Counter <br>
+  <img width=auto height=auto src="images/2.png">
+  <br><strong>Fig 1: Block diagram of three-bit Ring Counter <br>
 </p>
 
 In this example,
@@ -32,8 +44,8 @@ In this example,
 * These three D flip-flops are cascaded in such a way that output of D flip-flop 0 is fed to the input of D flip-flop 1, D flip-flop 1 output is fed to the D flip-flop 2 input and, D flip-flop 2 output is fed to the D flip-flop 0 input through Event system, to complete the required ring counter circuit as shown in below figure. 
  
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/rkWOAJF.jpg">
-  <br>Figure 2:Cascaded connections of three D-flipflops <br>
+  <img width=900 height=auto src="images/3.png">
+  <br><strong>Fig 2:Cascaded connections of three D-flipflops <br>
 </p> 
 
 * The even LUTs (i.e. LUT0/LUT2/LUT4) are configured to produce custom logic gate. The output of the Timer B, which is used as a clock signal is applied only to even LUTs. 
@@ -49,42 +61,28 @@ In this example,
 * The on-board indication LED blinks, whenever a switch (SW0) press event is reported. 
 * The 3-bit ring counter data gets transferred to the terminal window of  data visualizer tool through mEDBG of the AVR128DA48 Curiosity Nano board.
 
-## To see the Ring Counter demo operation video, click on the below image.
 
+# Hardware used
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=BYyyZrUc0Wo
-" target="_blank"><img src="https://i.imgur.com/2lCFM4D.jpg"
-alt="IMAGE ALT TEXT HERE" width="500" height="300" border="10" /></a> 
+* AVR128DA48 Curiosity Nano Evaluation Kit [[Part Number:DM164151]](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/DM164151 "[Part Number:DM164151]")
 
-
-# Hardware
-
-## AVR128DA48 Curiosity nano evaluation board
-Curiosity Nano boards features a variety of PIC® and AVR® MCUs, allowing rapid prototyping and easy evaluation of the design. They also offer full programming and debugging capabilities to support throughout the development process. Featuring a low-power high memory AVR core and intelligent hardware peripherals, the AVR128DA48 curiosity nano is engineered for real-time control, automotive and IoT applications alike.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/WM8mRfR.jpg">
-  <br>Figure 3:AVR128DA48 Curiosity Nano board<br>
-</p>
+  <img width=600 height=auto src="images/4.png">
+  <br><strong>Fig 3 : AVR128DA48 Curiosity Nano Evaluation Kit<br>
+</p> 
 
-# Software Tools
-Microchip’s IDEs, compiler and graphical code generators are used throughout the application firmware development to provide an easy and hassle-free user experience. Following are the tools which are used for this demo application:
-* MPLAB X IDE (v 5.30)
-* XC8 Compiler (v 2.10)
-* MPLAB Code Configurator (MCC v 3.85.1)
-* Standalone Data Visualizer (v 2.20.674)
+# Software used
+
+- [MPLAB X IDE v5.40](https://www.microchip.com/mplab/mplab-x-ide "MPLAB X IDE v5.40")
+- [XC8 Compiler v2.20](https://www.microchip.com/mplab/compilers "XC8 Compiler v2.20")
+- [MPLAB Code Configurator (MCC) v3.95.0](https://www.microchip.com/mplab/mplab-code-configurator "MPLAB Code Configurator (MCC) v3.95.0")
+- [AVR8bit Lib v2.3.0](https://www.microchip.com/mplab/mplab-code-configurator "AVR8bit Lib v2.3.0")
+- AVR-Dx DFP 1.1.40
+- [Standalone Data Visualizer v2.20.674](https://www.microchip.com/mplab/avr-support/data-visualizer "Standalone Data Visualizer v2.20.674")
 
 **Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.**
 
-# MCC Project creation
-Refer Appendix section for step by step instructions to configure the project through MCC. 
-
-# Device Programming:
-Load the firmware to the MCU by clicking on “Run main project” icon in MPLAB X IDE as shown in below figure.
-
-<p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/NuTntAa.jpg">
-</p>
 
 # Steps to open Terminal window in Data Visualizer:
 
@@ -98,8 +96,10 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 6.	Click on the **Connect** button and then terminal window is opened.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/1FNEqoM.jpg">
+  <img width=900 height=auto src="images/5.png">
+  <br><strong>Fig 4 : Standalone Data Visualizer window<br>
 </p>
+
 
 # Demo Operation:
 
@@ -108,7 +108,8 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 * Observe first state of the ring counter is displayed by default on the terminal window, only once at the start of the functionality, without a switch press event. The text displayed on the terminal window is “First state=1 0 0”.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/2nEZNgA.jpg">
+  <img width=750 height=auto src="images/6.png">
+  <br><strong>Fig 5 : Initial status on Terminal window<br>
 </p>
 
 * After the first state is displayed on terminal window, user needs to wait for the next instruction to be displayed on terminal window. 
@@ -116,7 +117,8 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 * Observe the next instruction to the user is displayed on terminal window.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/21LNnQS.jpg">
+  <img width=750 height=auto src="images/7.png">
+  <br><strong>Fig 6 : Second state on Terminal window<br>
 </p>
 
 * Press Switch (SW0) to display the third state of the ring counter and observe the text “Third state = 0 0 1” is displayed on terminal window.
@@ -124,7 +126,8 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 * Press Switch (SW0) to display the first state of the ring counter on the terminal window.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/cZATP17.jpg">
+  <img width=750 height=auto src="images/8.png">
+  <br><strong>Fig 7 : Third state on Terminal window<br>
 </p>
 
 # Conclusion:
@@ -134,12 +137,19 @@ The usage of CCL peripheral provides predictable response time, reduces firmware
 
 # Appendix:  MCC Project creation
 
-## System Module Configuration: 
-The system configuration window of MCC is used for MCU oscillator, Brown-out Detector, Watchdog timer and low voltage programming configuration. The **Internal Oscillator** option is selected as a clock source and by default 4 MHz system clock is selected as a Oscillator frequency. Check the **Prescaler Enable** option and select prescaler division as 4x which generates 1MHz frequency as the main clock.
+This section explains how to generate firmware using MCC.
+#### 1. Create a New MPLAB X Project and Open MCC
+- Open the MPLAB X IDE
+- Create New project: File -> New Project
+- Select Microchip Embedded -> Standalone Project
+- Select AVR128DA48 as the target device
+- Select XC8 as compiler
+- Open MCC by clicking the MCC icon in the toolbar ![](images/mcc-icon.png)
 
-<p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/Nw5ssFD.jpg">
-</p>
+#### 2. Configure MCC
+##### o	Add Peripherals to project
+- Add CRCSCAN, NVMCTRL, RTC, USART1 to the project.
+<br><img src="images/add-peripherals.png" width="450">
 
 ## USART1 Configuration: 
 In this example, USART1 is used to transmit the data on the terminal window, to display the three states of the ring counter (i.e. First state=100/Second state=010/Third state=001). The USART1 peripheral is also used to transmit the instructions to the user on terminal window. Configurations to be done on USART1 peripheral.
@@ -148,7 +158,8 @@ In this example, USART1 is used to transmit the data on the terminal window, to 
 * Check the **Enable USART Transmitter** checkbox.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/ia0ap9m.jpg">
+  <img width=auto height=auto src="images/usart">
+  <br><strong>Fig 8 : USART1 configuration window<br>
 </p>
 
 ## Timer B: 
@@ -161,7 +172,8 @@ Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it gener
 * Check the **Enable Pin Output** field. This will enable the Timer waveform output on the corresponding pin.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/D3aikAF.jpg">
+  <img width=auto height=auto src="images/TCB">
+  <br><strong>Fig 8 : Timer configuration window<br>
 </p>
 
 ## Configurable Custom Logic: 
@@ -172,7 +184,8 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * Select the **LUT0** in CCL settings window and scroll down the cursor.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/96hWkwq.jpg">
+  <img width=auto height=auto src="images/lut0.png">
+  <br><strong>Fig 8 : Create New Project<br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT0.
@@ -185,6 +198,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="https://i.imgur.com/74K8HOS.jpg">
+  <br><strong>Fig 8 : Create New Project<br>
 </p>
 
 ### Configurations to be done for LUT1.
@@ -194,6 +208,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="https://i.imgur.com/AdT3Y6i.jpg">
+  <br><strong>Fig 8 : Create New Project<br>
 </p>
 
 ### Configurations to be done for LUT2.
@@ -202,6 +217,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="https://i.imgur.com/NE8kOC3.jpg">
+  <br><strong>Fig 8 : Create New Project<br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT2.
