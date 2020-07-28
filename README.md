@@ -158,7 +158,7 @@ In this example, USART1 is used to transmit the data on the terminal window, to 
 * Check the **Enable USART Transmitter** checkbox.
 
 <p align="center">
-  <img width=auto height=auto src="images/usart">
+  <img width=auto height=auto src="images/usart.png">
   <br><strong>Fig 8 : USART1 configuration window<br>
 </p>
 
@@ -172,7 +172,7 @@ Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it gener
 * Check the **Enable Pin Output** field. This will enable the Timer waveform output on the corresponding pin.
 
 <p align="center">
-  <img width=auto height=auto src="images/TCB">
+  <img width=auto height=auto src="images/TCB.png">
   <br><strong>Fig 8 : Timer configuration window<br>
 </p>
 
