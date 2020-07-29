@@ -148,8 +148,12 @@ This section explains how to generate firmware using MCC.
 
 #### 2. Configure MCC
 ##### o	Add Peripherals to project
-- Add CRCSCAN, NVMCTRL, RTC, USART1 to the project.
-<br><img src="images/add-peripherals.png" width="450">
+- Add CCL, Event system, Timer/Counter type B (TCB), USART1 to the project.
+<p align="center">
+  <img width=750 height=auto src="images/peripheralslist.png">
+  <br><strong>Fig 7 : Add peripherals to the project<br>
+</p>
+<br><img src="images/peripheralslist.png" width="450">
 
 ## USART1 Configuration: 
 In this example, USART1 is used to transmit the data on the terminal window, to display the three states of the ring counter (i.e. First state=100/Second state=010/Third state=001). The USART1 peripheral is also used to transmit the instructions to the user on terminal window. Configurations to be done on USART1 peripheral.
@@ -158,7 +162,7 @@ In this example, USART1 is used to transmit the data on the terminal window, to 
 * Check the **Enable USART Transmitter** checkbox.
 
 <p align="center">
-  <img width=auto height=auto src="images/usart.png">
+  <img width=auto height=auto src="images/usart1.png">
   <br><strong>Fig 8 : USART1 configuration window<br>
 </p>
 
@@ -172,7 +176,7 @@ Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it gener
 * Check the **Enable Pin Output** field. This will enable the Timer waveform output on the corresponding pin.
 
 <p align="center">
-  <img width=auto height=auto src="images/TCB.png">
+  <img width=auto height=auto src="images/tcb2.png">
   <br><strong>Fig 8 : Timer configuration window<br>
 </p>
 
@@ -185,7 +189,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut0.png">
-  <br><strong>Fig 8 : Create New Project<br>
+  <br><strong>Fig 8 : LUT0 and LUT1 block diagram<br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT0.
@@ -197,8 +201,8 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In **Sequential Configuration** section, select the **DFF**(D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/74K8HOS.jpg">
-  <br><strong>Fig 8 : Create New Project<br>
+  <img width=auto height=auto src="images/lutotruthtable.png">
+  <br><strong>Fig 8 : LUT0 configuration window<br>
 </p>
 
 ### Configurations to be done for LUT1.
@@ -207,8 +211,8 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In Truth Table section, select OR gate option from the drop-down menu.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/AdT3Y6i.jpg">
-  <br><strong>Fig 8 : Create New Project<br>
+  <img width=auto height=auto src="images/lut1truthtable.png">
+  <br><strong>Fig 8 : LUT1 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT2.
@@ -216,8 +220,8 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * Select the **LUT2** in CCL settings window and scroll down the cursor.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/NE8kOC3.jpg">
-  <br><strong>Fig 8 : Create New Project<br>
+  <img width=auto height=auto src="images/lut2.png">
+  <br><strong>Fig 8 : LUT2 and LUT3 block diagram <br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT2.
@@ -228,7 +232,8 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In **Sequential Configuration** section, select the **DFF** (D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/iXLA5xU.jpg">
+  <img width=auto height=auto src="images/lut2truthtable.png">
+  <br><strong>Fig 8 : LUT2 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT3
@@ -237,7 +242,8 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In Truth Table section, select OR gate option from the drop-down menu.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/zKCSNhe.jpg">
+  <img width=auto height=auto src="images/lut3truthtable.png">
+  <br><strong>Fig 8 : LUT3 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT4.
@@ -245,7 +251,8 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * Select the **LUT4** in CCL settings window and scroll down the cursor.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/7igxSjz.jpg">
+  <img width=auto height=auto src="images/lut4.png">
+  <br><strong>Fig 8 : LUT4 and LUT5 block diagram <br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT4.
@@ -256,7 +263,8 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In **Sequential Configuration** section, select the **DFF** (D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/qOkMJrV.jpg">
+  <img width=auto height=auto src="images/lut4truthtable.png">
+  <br><strong>Fig 8 : LUT4 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT5.
@@ -265,7 +273,8 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In Truth Table section, select OR gate option from the drop-down menu.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/10HAPLk.jpg">
+  <img width=auto height=auto src="images/lut5truthtable.png">
+  <br><strong>Fig 8 : LUT5 configuration window <br>
 </p>
 
 **Note:** Once all the peripherals configuration is done and MCC files are generated, open ccl.c file from src (source) folder in the project. In the file write a value “0XF3” to the registers named as CCL.LUT0CTRLA, CCL.LUT2CTRLA and CCL.LUT4CTRLA. Writing this value to a register allows to use TCB2 (Timer B) output as a clock to even LUT’s. 
