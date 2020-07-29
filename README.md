@@ -200,7 +200,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 * In **Sequential Configuration** section, select the **DFF**(D-flipflop) option from the drop-down menu against the **Sequential Logic** field. 
 
 <p align="center">
-  <img width=auto height=auto src="images/lutotruthtable.png">
+  <img width=auto height=auto src="images/lut0truthtable.png">
   <br><strong>Fig 12: LUT0 configuration window<br>
 </p>
 
