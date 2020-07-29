@@ -96,7 +96,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 6.	Click on the **Connect** button and then terminal window is opened.
 
 <p align="center">
-  <img width=900 height=auto src="images/5.png">
+  <img width=900 height=auto src="images/datavisualizer.png">
   <br><strong>Fig 4 : Standalone Data Visualizer window<br>
 </p>
 
@@ -150,10 +150,9 @@ This section explains how to generate firmware using MCC.
 ##### o	Add Peripherals to project
 - Add CCL, Event system, Timer/Counter type B (TCB), USART1 to the project.
 <p align="center">
-  <img width=750 height=auto src="images/peripheralslist.png">
-  <br><strong>Fig 7 : Add peripherals to the project<br>
+  <img width=auto height=auto src="images/peripheralslist.png">
+  <br><strong>Fig 8: Add peripherals to the project<br>
 </p>
-<br><img src="images/peripheralslist.png" width="450">
 
 ## USART1 Configuration: 
 In this example, USART1 is used to transmit the data on the terminal window, to display the three states of the ring counter (i.e. First state=100/Second state=010/Third state=001). The USART1 peripheral is also used to transmit the instructions to the user on terminal window. Configurations to be done on USART1 peripheral.
@@ -163,7 +162,7 @@ In this example, USART1 is used to transmit the data on the terminal window, to 
 
 <p align="center">
   <img width=auto height=auto src="images/usart1.png">
-  <br><strong>Fig 8 : USART1 configuration window<br>
+  <br><strong>Fig 9: USART1 configuration window<br>
 </p>
 
 ## Timer B: 
@@ -177,7 +176,7 @@ Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it gener
 
 <p align="center">
   <img width=auto height=auto src="images/tcb2.png">
-  <br><strong>Fig 8 : Timer configuration window<br>
+  <br><strong>Fig 10: Timer configuration window<br>
 </p>
 
 ## Configurable Custom Logic: 
@@ -189,7 +188,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut0.png">
-  <br><strong>Fig 8 : LUT0 and LUT1 block diagram<br>
+  <br><strong>Fig 11: LUT0 and LUT1 block diagram<br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT0.
@@ -202,7 +201,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lutotruthtable.png">
-  <br><strong>Fig 8 : LUT0 configuration window<br>
+  <br><strong>Fig 12: LUT0 configuration window<br>
 </p>
 
 ### Configurations to be done for LUT1.
@@ -212,7 +211,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut1truthtable.png">
-  <br><strong>Fig 8 : LUT1 configuration window <br>
+  <br><strong>Fig 13: LUT1 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT2.
@@ -221,7 +220,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut2.png">
-  <br><strong>Fig 8 : LUT2 and LUT3 block diagram <br>
+  <br><strong>Fig 14: LUT2 and LUT3 block diagram <br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT2.
@@ -233,7 +232,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut2truthtable.png">
-  <br><strong>Fig 8 : LUT2 configuration window <br>
+  <br><strong>Fig 15: LUT2 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT3
@@ -243,7 +242,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut3truthtable.png">
-  <br><strong>Fig 8 : LUT3 configuration window <br>
+  <br><strong>Fig 16: LUT3 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT4.
@@ -252,7 +251,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut4.png">
-  <br><strong>Fig 8 : LUT4 and LUT5 block diagram <br>
+  <br><strong>Fig 17: LUT4 and LUT5 block diagram <br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT4.
@@ -264,7 +263,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut4truthtable.png">
-  <br><strong>Fig 8 : LUT4 configuration window <br>
+  <br><strong>Fig 18: LUT4 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT5.
@@ -274,7 +273,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut5truthtable.png">
-  <br><strong>Fig 8 : LUT5 configuration window <br>
+  <br><strong>Fig 19: LUT5 configuration window <br>
 </p>
 
 **Note:** Once all the peripherals configuration is done and MCC files are generated, open ccl.c file from src (source) folder in the project. In the file write a value “0XF3” to the registers named as CCL.LUT0CTRLA, CCL.LUT2CTRLA and CCL.LUT4CTRLA. Writing this value to a register allows to use TCB2 (Timer B) output as a clock to even LUT’s. 
@@ -290,11 +289,13 @@ Event system is also used to connect output of the Timer B (generates a single p
 * Select **CCL_LUT4** option from the drop-down menu against the Event Generator, which is connected to the Event User **CCLLUT0B** through CHANNEL 6.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/M3kjuCp.jpg">
+  <img width=auto height=auto src="images/eventsystem1.png">
+  <br><strong>Fig 20: Event system configuration window 1 <br>
 </p>
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/yH1nbNq.jpg">
+  <img width=auto height=auto src="images/eventsystem2.png">
+   <br><strong>Fig 21: Event system configuration window 2 <br>
 </p>
 
 ## Pin Module: 
@@ -312,7 +313,8 @@ The I/O pin mapping of the AVR128DA48MCU for USART3, CCL, Timer B interface, Cur
 * Configure pin **PF2** as input and enable **PULLUPEN**, which feed logic “1” signal to LUT3.
 
 <p align="center">
-  <img width=auto height=auto src="https://i.imgur.com/rwWXBiA.jpg">
+  <img width=auto height=auto src="images/pinmodule.png">
+  <br><strong>Fig 22: Pin module configuration window <br>
 </p>
 
 
