@@ -50,14 +50,25 @@
             ],
 			[
                "Peripherals", "EVENT SYSTEM"
-            ]							
+            ],
+			[
+               "Peripherals", "GPIO"
+            ]
         ],
         "peripherals": [
-            "CCL","USART","TCB","EVENT SYSTEM"
+            "CCL","USART","TCB","EVENT SYSTEM","GPIO"
         ],
         "keywords": [
             "MCC",
-            "3-Bit Ring Counter"		
+            "3-Bit Ring Counter",
+			"Curiosity Nano Board",
+			"Flipflop",
+			"Sequential logic",
+			"Combinational",
+			"Logic gates",
+			"OR gate",
+			"AND gate",
+			"Digital"
         ],
 		"additionalData": {
 			"longDescription": {
