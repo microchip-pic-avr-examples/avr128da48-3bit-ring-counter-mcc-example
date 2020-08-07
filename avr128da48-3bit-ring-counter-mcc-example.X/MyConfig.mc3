@@ -29,12 +29,12 @@
          <string>class com.microchip.mcc.mcu8.modules.ccl.tiny_mega_init.CCL</string>
       </entry>
       <entry>
-         <string>USART1</string>
-         <string>class com.microchip.mcc.mcu8.modules.usart.tiny_mega_init.USART</string>
-      </entry>
-      <entry>
          <string>System Module</string>
          <string>class com.microchip.mcc.mcu8.systemManager.SystemManager</string>
+      </entry>
+      <entry>
+         <string>USART1</string>
+         <string>class com.microchip.mcc.mcu8.modules.usart.tiny_mega_init.USART</string>
       </entry>
       <entry>
          <string>BOD</string>
@@ -45,12 +45,12 @@
          <string>class com.microchip.mcc.mcu8.modules.tcb.tiny_mega_init.TCB</string>
       </entry>
       <entry>
-         <string>RSTCTRL</string>
-         <string>class com.microchip.mcc.mcu8.systemManager.tiny_mega_init.rstctrl.RSTCTRL</string>
-      </entry>
-      <entry>
          <string>SLPCTRL</string>
          <string>class com.microchip.mcc.mcu8.systemManager.tiny_mega_init.slpctrl.SLPCTRL</string>
+      </entry>
+      <entry>
+         <string>RSTCTRL</string>
+         <string>class com.microchip.mcc.mcu8.systemManager.tiny_mega_init.rstctrl.RSTCTRL</string>
       </entry>
       <entry>
          <string>Interrupt Manager</string>
@@ -663,12 +663,12 @@
          <value>1</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="USART1" name="CLK_PER"/>
-         <value>1000000</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TCB2" name="timerPeriod"/>
          <value>510us</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="USART1" name="CLK_PER"/>
+         <value>1000000</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="EVSYS" registerAlias="CHANNEL9" settingAlias="CHANNEL9" alias="ZCD0"/>
@@ -5779,12 +5779,12 @@
          <value>0</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="USART1" registerAlias="DBGCTRL" settingAlias="DBGRUN" alias="disabled"/>
-         <value>0</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TCB2" registerAlias="EVCTRL" settingAlias="FILTER"/>
          <value>disabled</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="USART1" registerAlias="DBGCTRL" settingAlias="DBGRUN" alias="disabled"/>
+         <value>0</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="PORTB.PIN4CTRL" settingAlias="PULLUPEN" alias="disabled"/>
@@ -9587,12 +9587,12 @@
          <value>INTDISABLE</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="CPUINT" registerAlias="CTRLA" settingAlias="IVSEL" alias="disabled"/>
-         <value>0</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="System Module" registerAlias="SYSCFG0" settingAlias="RSTPINCFG"/>
          <value>GPIO</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="CPUINT" registerAlias="CTRLA" settingAlias="IVSEL" alias="disabled"/>
+         <value>0</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="USART1" registerAlias="CTRLB" settingAlias="RXEN"/>
@@ -12039,11 +12039,11 @@
          <value>32</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="CPUINT" registerAlias="STATUS"/>
+         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="System Module" registerAlias="OCDMSTATUS" settingAlias="OCDMR" alias="disabled"/>
          <value>0</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="System Module" registerAlias="OCDMSTATUS" settingAlias="OCDMR" alias="disabled"/>
+         <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="CPUINT" registerAlias="STATUS"/>
          <value>0</value>
       </entry>
       <entry>
@@ -14941,12 +14941,12 @@
          <hash>4bdd91e9291f488c460cfd63f02d51d04de52a63c9cb15d00a6eb2f781740513</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\src\cpuint.c</file>
-         <hash>f9b05fddddeabf0ade976e485b8adaddad2516e86dfa428741fd8ea920e07f2f</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\utils\interrupt_avr8.h</file>
          <hash>98adc596175f2e76d4d918685cf050032a3efb605901edb6be0a35dda05a57e9</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\src\cpuint.c</file>
+         <hash>f9b05fddddeabf0ade976e485b8adaddad2516e86dfa428741fd8ea920e07f2f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\include\evsys.h</file>
@@ -14962,7 +14962,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.c</file>
-         <hash>cb58e7d2a2c2693f9980189897bf64648b63975a3c3c4361ee52d27b9cacf0be</hash>
+         <hash>4212059b5b9fefd35f42366174ab7bceaa707728a18995ebab6a2f8832769e9a</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\src\usart1.c</file>
@@ -14982,7 +14982,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>bcebc35d54c76103d70e9f3b02d24732cd48169ab487fc563bb8a1b4348be072</hash>
+         <hash>b1d65afe44e245d9ce86a17b1348255dd2967c0c171bfeb93f3fc2979911b060</hash>
       </entry>
       <entry>
          <file>main.c</file>
@@ -15005,24 +15005,24 @@
          <hash>002db199835943a5e634d5e9904119d0f50eb94af5300454791a93c81c5353b7</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\include\cpuint.h</file>
-         <hash>802591ef9a8f76d82a9ebdd96dac4c62c9a3c56d991188efaebd5ec3ca4228e2</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\include\rstctrl.h</file>
          <hash>3aaf94dcc7f4f51ce811c4b290f1dbcd29748fb231cb4d3e7f27f49586651c83</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\cpuint.h</file>
+         <hash>802591ef9a8f76d82a9ebdd96dac4c62c9a3c56d991188efaebd5ec3ca4228e2</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\include\usart1.h</file>
          <hash>0070c5281af2fcb06379f2b54c46e42977ee2dd983d0d692b4aaa249002f02fa</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\src\ccl.c</file>
-         <hash>20fc9f9e9a56942b63f01cf053077eaba089f847939c6a314ee4e25756d5851f</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\config\clock_config.h</file>
          <hash>d039d535489d8667e4c772c5e03e5551b8f051ee448be006e030e5022a9081b3</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\src\ccl.c</file>
+         <hash>20fc9f9e9a56942b63f01cf053077eaba089f847939c6a314ee4e25756d5851f</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\src\evsys.c</file>

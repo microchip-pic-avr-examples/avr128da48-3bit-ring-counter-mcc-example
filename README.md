@@ -156,6 +156,14 @@ This section explains how to generate firmware using MCC.
   <br>Fig 8: Add peripherals to the project<br>
 </p>
 
+## System module configuration:
+The system configuration window of MCC is used for MCU oscillator, Brown-out Detector, Watchdog timer and low voltage programming configuration. The **Internal Oscillator** option is selected as a clock source and by default 4 MHz system clock is selected as a Oscillator frequency. Check the **Prescaler Enable** option and select prescaler division as 4x which generates **1MHz** frequency as the main clock.
+
+<p align="center">
+  <img width=auto height=auto src="images/system-module.png">
+  <br>Fig 9: System module configuration window<br>
+</p>
+
 ## USART1 configuration: 
 In this example, USART1 is used to transmit the data on the terminal window, to display the three states of the ring counter (i.e. First state=100/Second state=010/Third state=001). The USART1 peripheral is also used to transmit the instructions to the user on terminal window. Configurations to be done on USART1 peripheral.
 * Check the **Printf support** checkbox.
@@ -164,7 +172,7 @@ In this example, USART1 is used to transmit the data on the terminal window, to 
 
 <p align="center">
   <img width=auto height=auto src="images/usart1.png">
-  <br>Fig 9: USART1 configuration window<br>
+  <br>Fig 10: USART1 configuration window<br>
 </p>
 
 ## Timer B configuration: 
@@ -178,7 +186,7 @@ Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it gener
 
 <p align="center">
   <img width=auto height=auto src="images/tcb2.png">
-  <br>Fig 10: Timer configuration window<br>
+  <br>Fig 11: Timer configuration window<br>
 </p>
 
 ## Configurable Custom Logic(CCL) configuration: 
@@ -190,7 +198,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut0.png">
-  <br>Fig 11: LUT0 and LUT1 block diagram<br>
+  <br>Fig 12: LUT0 and LUT1 block diagram<br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT0.
@@ -203,7 +211,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut0truthtable.png">
-  <br>Fig 12: LUT0 configuration window<br>
+  <br>Fig 13: LUT0 configuration window<br>
 </p>
 
 ### Configurations to be done for LUT1.
@@ -213,7 +221,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut1truthtable.png">
-  <br>Fig 13: LUT1 configuration window <br>
+  <br>Fig 14: LUT1 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT2.
@@ -222,7 +230,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut2.png">
-  <br>Fig 14: LUT2 and LUT3 block diagram <br>
+  <br>Fig 15: LUT2 and LUT3 block diagram <br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT2.
@@ -234,7 +242,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut2truthtable.png">
-  <br>Fig 15: LUT2 configuration window <br>
+  <br>Fig 16: LUT2 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT3
@@ -244,7 +252,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut3truthtable.png">
-  <br>Fig 16: LUT3 configuration window <br>
+  <br>Fig 17: LUT3 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT4.
@@ -253,7 +261,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut4.png">
-  <br>Fig 17: LUT4 and LUT5 block diagram <br>
+  <br>Fig 18: LUT4 and LUT5 block diagram <br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT4.
@@ -265,7 +273,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut4truthtable.png">
-  <br>Fig 18: LUT4 configuration window <br>
+  <br>Fig 19: LUT4 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT5.
@@ -275,7 +283,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut5truthtable.png">
-  <br>Fig 19: LUT5 configuration window <br>
+  <br>Fig 20: LUT5 configuration window <br>
 </p>
 
 **Note:** Once all the peripherals configuration is done and MCC files are generated, open ccl.c file from src (source) folder in the project. In the file write a value “0XF3” to the registers named as CCL.LUT0CTRLA, CCL.LUT2CTRLA and CCL.LUT4CTRLA. Writing this value to a register allows to use TCB2 (Timer B) output as a clock to even LUT’s. 
@@ -292,12 +300,12 @@ Event system is also used to connect output of the Timer B (generates a single p
 
 <p align="center">
   <img width=auto height=auto src="images/eventsystem1.png">
-  <br>Fig 20: Event system configuration window 1 <br>
+  <br>Fig 21: Event system configuration window 1 <br>
 </p>
 
 <p align="center">
   <img width=auto height=auto src="images/eventsystem2.png">
-   <br>Fig 21: Event system configuration window 2 <br>
+   <br>Fig 22: Event system configuration window 2 <br>
 </p>
 
 ## Pin Module: 
@@ -316,7 +324,7 @@ The I/O pin mapping of the AVR128DA48MCU for USART3, CCL, Timer B interface, Cur
 
 <p align="center">
   <img width=auto height=auto src="images/pinmodule.png">
-  <br>Fig 22: Pin module configuration window <br>
+  <br>Fig 23: Pin module configuration window <br>
 </p>
 
 
