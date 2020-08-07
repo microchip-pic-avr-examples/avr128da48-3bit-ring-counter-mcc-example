@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.avr128da48-3bit-ring-counter-mcc-example",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "displayName": "3-bit Ring Counter MPLABX example",
         "projectName": "avr128da48-3bit-ring-counter-mcc-example",
         "shortDescription": "AVR128DA48 3-bit ring counter implementation using CCL peripheral",
