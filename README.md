@@ -1,7 +1,9 @@
 <!-- Please do not change this html logo with link -->
 <a href="https://www.microchip.com" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="200"/></a>
 
-# Introduction  
+# 3-bit Ring Counter MPLABX example
+
+## Introduction  
 The Configurable Custom Logic (CCL) is a Core Independent Peripheral (CIP), which means it performs its tasks with no code or supervision from the CPU after configuration is completed. The CCL module is a programmable logic block and can be used to implement Combinational or Sequential logic functions. Since the logic functions implemented in the hardware have faster event response compared to the logic functions implemented in the software, the CCL gives the advantage of faster and predictable response to the users. This example demonstrates  3-bit ring counter implementation  using all 6 Look-Up-tables (LUTs) available with the CCL peripheral of AVR128DA48 MCU.
 
 **Note:** ***This example could be generated with 48 and 64 pin AVR-DA devices.***
@@ -17,24 +19,24 @@ The Configurable Custom Logic (CCL) is a Core Independent Peripheral (CIP), whic
 - [AVR128DA48 Product Page](https://www.microchip.com/wwwproducts/en/AVR128DA28 "AVR128DA48 Product Page")
 - [AVR128DA48 Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=avr128da48 "AVR128DA48 Code Examples on GitHub")
 - [AVR128DA48 Project Examples in START](https://start.atmel.com/#examples/AVR128DA48CuriosityNano "AVR128DA48 Project Examples in START")
-- [3bit Ring Counter - Studio Example]( https://github.com/microchip-pic-avr-examples/avr128da48-3bit-ring-counter-start-example.git "3bit Ring Counter - Studio Example")
+- [3-bit Ring Counter - Studio Example]( https://github.com/microchip-pic-avr-examples/avr128da48-3bit-ring-counter-start-example.git "3-bit Ring Counter - Studio Example")
 
 
-# Basics of Ring Counter: 
+## Basics of Ring Counter: 
 The ring counter is a type of counter composed of flipflops connected into a shift register, with the output of the last flipflop fed to the input of the first flipflop, making a circular or ring in structure. It is a synchronous counter which as a common clock signal that triggers all the flipflops at the same time. It is initialized such that only one of the flipflop output is 1 while the remainder is 0. Number of states of Ring counter is equal to number of flipflops used. To design three-bit ring counter, three flipflops are required. 
 
 The sequence of output from the three-bit ring counter is: 
 
 <p align="center">
   <img width=1000 height=auto src="images/1.png">
-  <br><strong>Table 1: Output states of 3bit ring counter <br>
+  <br>Table 1: Output states of 3bit ring counter <br>
 </p>
 
-# Demo Description            
+## Demo Description            
 
 <p align="center">
   <img width=auto height=auto src="images/2.png">
-  <br><strong>Fig 1: Block diagram of three-bit Ring Counter <br>
+  <br>Fig 1: Block diagram of three-bit Ring Counter <br>
 </p>
 
 In this example,
@@ -45,7 +47,7 @@ In this example,
  
 <p align="center">
   <img width=900 height=auto src="images/3.png">
-  <br><strong>Fig 2:Cascaded connections of three D-flipflops <br>
+  <br>Fig 2:Cascaded connections of three D-flipflops <br>
 </p> 
 
 * The even LUTs (i.e. LUT0/LUT2/LUT4) are configured to produce custom logic gate. The output of the Timer B, which is used as a clock signal is applied only to even LUTs. 
@@ -62,29 +64,29 @@ In this example,
 * The 3-bit ring counter data gets transferred to the terminal window of  data visualizer tool through mEDBG of the AVR128DA48 Curiosity Nano board.
 
 
-# Hardware used
+## Hardware used
 
 * AVR128DA48 Curiosity Nano Evaluation Kit [[Part Number:DM164151]](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/DM164151 "[Part Number:DM164151]")
 
 
 <p align="center">
   <img width=600 height=auto src="images/4.png">
-  <br><strong>Fig 3 : AVR128DA48 Curiosity Nano Evaluation Kit<br>
+  <br>Fig 3 : AVR128DA48 Curiosity Nano Evaluation Kit<br>
 </p> 
 
-# Software used
+## Software used
 
 - [MPLAB X IDE v5.40](https://www.microchip.com/mplab/mplab-x-ide "MPLAB X IDE v5.40")
 - [XC8 Compiler v2.20](https://www.microchip.com/mplab/compilers "XC8 Compiler v2.20")
 - [MPLAB Code Configurator (MCC) v3.95.0](https://www.microchip.com/mplab/mplab-code-configurator "MPLAB Code Configurator (MCC) v3.95.0")
 - [AVR8bit Lib v2.3.0](https://www.microchip.com/mplab/mplab-code-configurator "AVR8bit Lib v2.3.0")
-- AVR-Dx DFP 1.1.40
+- [AVR-Dx DFP 1.3.65](https://packs.download.microchip.com/  "AVR-Dx DFP 1.3.65")
 - [Standalone Data Visualizer v2.20.674](https://www.microchip.com/mplab/avr-support/data-visualizer "Standalone Data Visualizer v2.20.674")
 
 **Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.**
 
 
-# Steps to open Terminal window in Data Visualizer:
+## Steps to open Terminal window in Data Visualizer:
 
 Open the Terminal window in Standalone Data Visualizer tool to observe the data of the ring counter and follow the below mentioned steps to open terminal window.
 
@@ -101,7 +103,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 </p>
 
 
-# Demo Operation:
+## Demo Operation:
 
 * After the Curiosity Nano board is powered on, load the firmware to AVR128DA48 MCU as explained in the Device Programming section.
 * Before each switch press, read the instructions provided on the terminal window. E.g. Press switch- To display first state of the Ring Counter.
@@ -109,7 +111,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 
 <p align="center">
   <img width=750 height=auto src="images/6.png">
-  <br><strong>Fig 5 : Initial status on Terminal window<br>
+  <br>Fig 5 : Initial status on Terminal window<br>
 </p>
 
 * After the first state is displayed on terminal window, user needs to wait for the next instruction to be displayed on terminal window. 
@@ -118,7 +120,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 
 <p align="center">
   <img width=750 height=auto src="images/7.png">
-  <br><strong>Fig 6 : Second state on Terminal window<br>
+  <br>Fig 6 : Second state on Terminal window<br>
 </p>
 
 * Press Switch (SW0) to display the third state of the ring counter and observe the text “Third state = 0 0 1” is displayed on terminal window.
@@ -127,15 +129,15 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 
 <p align="center">
   <img width=750 height=auto src="images/8.png">
-  <br><strong>Fig 7 : Third state on Terminal window<br>
+  <br>Fig 7 : Third state on Terminal window<br>
 </p>
 
-# Conclusion:
+## Conclusion:
 This example demonstrates configuration and usage of CIP’s (Core Independent Peripherals), such as CCL and Event System in the application. This example also explains realization of 3-bit Ring Counter using all the 6 LUTs  of CCL peripheral available on the AVR128DA48 MCU. 
 
 The usage of CCL peripheral provides predictable response time, reduces firmware complexity and offers component integrity by allowing sequential logic gates realization without the need for on-board Programmable Logic Devices (PLDs). Thereby reducing BOM cost and speed up time to market for the new products. 
 
-# Appendix:  MCC Project creation
+## Appendix:  MCC Project creation
 
 This section explains how to generate firmware using MCC.
 #### 1. Create a New MPLAB X Project and Open MCC
@@ -151,10 +153,10 @@ This section explains how to generate firmware using MCC.
 - Add CCL, Event system, Timer/Counter type B (TCB), USART1 to the project.
 <p align="center">
   <img width=auto height=auto src="images/peripheralslist.png">
-  <br><strong>Fig 8: Add peripherals to the project<br>
+  <br>Fig 8: Add peripherals to the project<br>
 </p>
 
-## USART1 Configuration: 
+## USART1 configuration: 
 In this example, USART1 is used to transmit the data on the terminal window, to display the three states of the ring counter (i.e. First state=100/Second state=010/Third state=001). The USART1 peripheral is also used to transmit the instructions to the user on terminal window. Configurations to be done on USART1 peripheral.
 * Check the **Printf support** checkbox.
 * Set the **Baud Rate** to **9600**.
@@ -162,11 +164,11 @@ In this example, USART1 is used to transmit the data on the terminal window, to 
 
 <p align="center">
   <img width=auto height=auto src="images/usart1.png">
-  <br><strong>Fig 9: USART1 configuration window<br>
+  <br>Fig 9: USART1 configuration window<br>
 </p>
 
-## Timer B: 
-Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it generates a Single pulse which is used as a Clock signal for all the three D-flipflops. The output of all the three D-flipflops changes with respective to this clock signal.  Configurations to be done on TCB2 (Timer B 2) peripheral.
+## Timer B configuration: 
+Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it generates a Single pulse which is used as a Clock signal for all the three D-flipflops. The output of all the three D-flipflops changes with respective to this clock signal.  Configurations to be done on TCB2 peripheral.
 * Check the **Enable TCB** option to enable the TCB2 module.
 * Select **CLK_PER/2** option from the drop-down menu against the **Clock Select** field.
 * Select the **Single Shot** mode option from the drop-down menu against the **Timer Mode**.
@@ -176,10 +178,10 @@ Timer B is a 16-bit Timer which is configured in a Single Shot Mode and it gener
 
 <p align="center">
   <img width=auto height=auto src="images/tcb2.png">
-  <br><strong>Fig 10: Timer configuration window<br>
+  <br>Fig 10: Timer configuration window<br>
 </p>
 
-## Configurable Custom Logic: 
+## Configurable Custom Logic(CCL) configuration: 
 To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are configured together as a D-flipflop 0, LUT2 and LUT3 are configured together as a D-flipflop 1, LUT4 and LUT5 are configured together as a D-flipflop 2.
 
  ### Configurations to be done for LUT0.
@@ -188,7 +190,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut0.png">
-  <br><strong>Fig 11: LUT0 and LUT1 block diagram<br>
+  <br>Fig 11: LUT0 and LUT1 block diagram<br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT0.
@@ -201,7 +203,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut0truthtable.png">
-  <br><strong>Fig 12: LUT0 configuration window<br>
+  <br>Fig 12: LUT0 configuration window<br>
 </p>
 
 ### Configurations to be done for LUT1.
@@ -211,7 +213,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut1truthtable.png">
-  <br><strong>Fig 13: LUT1 configuration window <br>
+  <br>Fig 13: LUT1 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT2.
@@ -220,7 +222,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut2.png">
-  <br><strong>Fig 14: LUT2 and LUT3 block diagram <br>
+  <br>Fig 14: LUT2 and LUT3 block diagram <br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT2.
@@ -232,7 +234,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut2truthtable.png">
-  <br><strong>Fig 15: LUT2 configuration window <br>
+  <br>Fig 15: LUT2 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT3
@@ -242,7 +244,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut3truthtable.png">
-  <br><strong>Fig 16: LUT3 configuration window <br>
+  <br>Fig 16: LUT3 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT4.
@@ -251,7 +253,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut4.png">
-  <br><strong>Fig 17: LUT4 and LUT5 block diagram <br>
+  <br>Fig 17: LUT4 and LUT5 block diagram <br>
 </p>
 
 * Check the **Enable LUT** option, which enables the LUT4.
@@ -263,7 +265,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut4truthtable.png">
-  <br><strong>Fig 18: LUT4 configuration window <br>
+  <br>Fig 18: LUT4 configuration window <br>
 </p>
 
 ### Configurations to be done for LUT5.
@@ -273,7 +275,7 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
 
 <p align="center">
   <img width=auto height=auto src="images/lut5truthtable.png">
-  <br><strong>Fig 19: LUT5 configuration window <br>
+  <br>Fig 19: LUT5 configuration window <br>
 </p>
 
 **Note:** Once all the peripherals configuration is done and MCC files are generated, open ccl.c file from src (source) folder in the project. In the file write a value “0XF3” to the registers named as CCL.LUT0CTRLA, CCL.LUT2CTRLA and CCL.LUT4CTRLA. Writing this value to a register allows to use TCB2 (Timer B) output as a clock to even LUT’s. 
@@ -290,12 +292,12 @@ Event system is also used to connect output of the Timer B (generates a single p
 
 <p align="center">
   <img width=auto height=auto src="images/eventsystem1.png">
-  <br><strong>Fig 20: Event system configuration window 1 <br>
+  <br>Fig 20: Event system configuration window 1 <br>
 </p>
 
 <p align="center">
   <img width=auto height=auto src="images/eventsystem2.png">
-   <br><strong>Fig 21: Event system configuration window 2 <br>
+   <br>Fig 21: Event system configuration window 2 <br>
 </p>
 
 ## Pin Module: 
@@ -314,7 +316,7 @@ The I/O pin mapping of the AVR128DA48MCU for USART3, CCL, Timer B interface, Cur
 
 <p align="center">
   <img width=auto height=auto src="images/pinmodule.png">
-  <br><strong>Fig 22: Pin module configuration window <br>
+  <br>Fig 22: Pin module configuration window <br>
 </p>
 
 
