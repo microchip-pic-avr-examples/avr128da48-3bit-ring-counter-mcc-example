@@ -60,6 +60,8 @@
         ],
         "keywords": [
             "MCC",
+			"AVR DA",
+			"AVR128DA48",
             "3-Bit Ring Counter",
 			"Curiosity Nano Board",
 			"Flipflop",
