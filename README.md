@@ -6,7 +6,7 @@
 ## Introduction  
 The Configurable Custom Logic (CCL) is a Core Independent Peripheral (CIP), which means it performs its tasks with no code or supervision from the CPU after configuration is completed. The CCL module is a programmable logic block and can be used to implement Combinational or Sequential logic functions. Since the logic functions implemented in the hardware have faster event response compared to the logic functions implemented in the software, the CCL gives the advantage of faster and predictable response to the users. This example demonstrates  3-bit ring counter implementation  using all 6 Look-Up-tables (LUTs) available with the CCL peripheral of AVR128DA48 MCU.
 
-**Note:** ***This example could be generated with 48 and 64 pin AVR-DA devices.***
+**Note:** ***This example could be generated with 48 and 64 pin AVR DA devices.***
 
 #### To see the 3bit ring counter demo operation video, click on the below image.
 
@@ -80,7 +80,7 @@ In this example,
 - [XC8 Compiler v2.20](https://www.microchip.com/mplab/compilers "XC8 Compiler v2.20")
 - [MPLAB Code Configurator (MCC) v3.95.0](https://www.microchip.com/mplab/mplab-code-configurator "MPLAB Code Configurator (MCC) v3.95.0")
 - [AVR8bit Lib v2.3.0](https://www.microchip.com/mplab/mplab-code-configurator "AVR8bit Lib v2.3.0")
-- [AVR-Dx DFP 1.3.65](https://packs.download.microchip.com/  "AVR-Dx DFP 1.3.65")
+- [AVR-Dx DFP 1.4.75](https://packs.download.microchip.com/  "AVR-Dx DFP 1.4.75")
 - [Standalone Data Visualizer v2.20.674](https://www.microchip.com/mplab/avr-support/data-visualizer "Standalone Data Visualizer v2.20.674")
 
 **Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.**
@@ -99,7 +99,7 @@ Open the Terminal window in Standalone Data Visualizer tool to observe the data 
 
 <p align="center">
   <img width=900 height=auto src="images/datavisualizer.png">
-  <br><strong>Fig 4 : Standalone Data Visualizer window<br>
+  <br>Fig 4 : Standalone Data Visualizer window<br>
 </p>
 
 
@@ -286,7 +286,6 @@ To realize this example 3 D-flipflops are required. In CCL, LUT0 and LUT1 are co
   <br>Fig 20: LUT5 configuration window <br>
 </p>
 
-**Note:** Once all the peripherals configuration is done and MCC files are generated, open ccl.c file from src (source) folder in the project. In the file write a value “0XF3” to the registers named as CCL.LUT0CTRLA, CCL.LUT2CTRLA and CCL.LUT4CTRLA. Writing this value to a register allows to use TCB2 (Timer B) output as a clock to even LUT’s. 
 
 ## Event System: 
 In this example, event system is used to connect the output of D-flipflop 0 to the input of D-flipflop 1 and output of D-flipflop 1 to the input of D-flipflop 2 and output of D-flipflop 2 to the input of D-flipflop 0.
